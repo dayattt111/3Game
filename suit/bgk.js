@@ -1,37 +1,70 @@
-const drawCardButton = document.getElementById('drawCard');
-const suitElement = document.getElementById('suit');
+const pBatu = document.querySelector('.batu');
+const pGunting = document.querySelector('.gunting');
+const pKertas = document.querySelector('.kertas');
 
-const suits = ['♣️', '♦️', '♥️', '♠️'];
-const deck = [];
-
-for (let suit of suits) {
-    for (let i = 1; i <= 13; i++) {
-        deck.push(`${i} of ${suit}`);
-    }
+function displayComputerChoice(comChoice) {
+    const imgComputer = document.querySelector('#squareCom');
+    imgComputer.setAttribute('src', 'img/' + comChoice + '.png');
 }
 
-function shuffleDeck(deck) {
-    for (let i = deck.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
-}
+pBatu.addEventListener('click', function () {
+    const pCom = pilihanCom();
+    const pPlayer = pBatu.className;
+    const hasil = getHasil(pCom, pPlayer);
 
-shuffleDeck(deck);
+    console.log(pPlayer);
+    console.log(pCom);
+    console.log(hasil);
 
-let currentCard;
+    displayComputerChoice(pCom);
 
-drawCardButton.addEventListener('click', () => {
-    if (deck.length > 0) {
-        currentCard = deck.pop();
-        suitElement.textContent = `Current Suit: ${getSuit(currentCard)}`;
-    } else {
-        suitElement.textContent = 'Deck is empty!';
-        drawCardButton.disabled = true;
-    }
+    const info = document.querySelector('#output2');
+    info.innerHTML = hasil;
+
+    const getGambar = document.querySelector('.batu').getAttribute('src');
+
+    const getUser = document.querySelector('#squareUser');
+    getUser.innerHTML = `<img src=${getGambar} class='userBatu'>`;
+
+    console.log(getGambar);
 });
 
-function getSuit(card) {
-    const suitIndex = card.lastIndexOf(suits[0]);
-    return suits[suitIndex];
-}
+pGunting.addEventListener('click', function () {
+    const pCom = pilihanCom();
+    const pPlayer = pGunting.className;
+    const hasil = getHasil(pCom, pPlayer);
+
+    console.log(pPlayer);
+    console.log(pCom);
+    console.log(hasil);
+
+    displayComputerChoice(pCom);
+
+    const info = document.querySelector('#output2');
+    info.innerHTML = hasil;
+
+    const getGambar = document.querySelector('.gunting').getAttribute('src');
+
+    const getUser = document.querySelector('#squareUser');
+    getUser.innerHTML = `<img src=${getGambar} class='userGunting'>`;
+});
+
+pKertas.addEventListener('click', function () {
+    const pCom = pilihanCom();
+    const pPlayer = pKertas.className;
+    const hasil = getHasil(pCom, pPlayer);
+
+    console.log(pPlayer);
+    console.log(pCom);
+    console.log(hasil);
+
+    displayComputerChoice(pCom);
+
+    const info = document.querySelector('#output2');
+    info.innerHTML = hasil;
+
+    const getGambar = document.querySelector('.kertas').getAttribute('src');
+
+    const getUser = document.querySelector('#squareUser');
+    getUser.innerHTML = `<img src=${getGambar} class='userKertas'>`;
+});

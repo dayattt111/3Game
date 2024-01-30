@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contoh Menampilkan Gambar dengan JavaScript</title>
 </head>
 <body>
-    
-    <script src="api.js"></script>
+
+<div id="container"></div>
+
+<script>
+        // Path gambar yang akan ditampilkan
+      var imagePath = `C:\User\ASUS\Downloads\K1`;  // Ganti 'path/gambar.jpg' dengan path yang sesuai
+
+      // Membuat elemen gambar secara dinamis
+      var imgElement = document.createElement('img');
+
+      // Menetapkan atribut src elemen gambar
+      imgElement.src = imagePath;
+
+      // Menetapkan atribut alt (optional)
+      imgElement.alt = 'Deskripsi Gambar';
+
+      // Mendapatkan elemen container dari HTML menggunakan ID
+      var containerElement = document.getElementById('container');
+
+      // Menambahkan elemen gambar ke dalam elemen container
+      containerElement.appendChild(imgElement);
+
+</script>
 </body>
 </html>
